@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "BestBaller",
+    "slug": "best-baller",
+    "scheme": "bestballer",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#F3F4F6"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#F3F4F6"
+      }
+    },
+    "web": {
+      "bundler": "metro"
+    }
+  }
+}

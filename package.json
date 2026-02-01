@@ -1,0 +1,25 @@
+{
+  "name": "best-baller",
+  "version": "0.1.0",
+  "private": true,
+  "main": "expo-router/entry",
+  "scripts": {
+    "start": "expo start",
+    "ios": "expo start --ios",
+    "android": "expo start --android",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "expo": "^51.0.0",
+    "expo-router": "^3.5.0",
+    "react": "18.2.0",
+    "react-native": "0.74.1",
+    "zustand": "^4.5.2",
+    "@supabase/supabase-js": "^2.45.2",
+    "victory-native": "^41.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.45",
+    "typescript": "^5.4.5"
+  }
+}
