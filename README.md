@@ -18,6 +18,10 @@ Ou, au choix :
 yarn start
 ```
 
+```bash
+npx expo start
+```
+
 ## Structure
 
 - `app/` : routes Expo Router (navigation par fichiers).

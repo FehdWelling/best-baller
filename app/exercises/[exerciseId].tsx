@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useMemo, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Button } from '../../src/components/Button';
@@ -7,6 +7,7 @@ import { TextField } from '../../src/components/TextField';
 import { getExerciseById } from '../../src/data/exercises';
 
 const ExerciseDetailScreen = () => {
+  const router = useRouter();
   const { exerciseId } = useLocalSearchParams<{ exerciseId?: string }>();
   const exercise = exerciseId ? getExerciseById(exerciseId) : undefined;
 
@@ -35,6 +36,7 @@ const ExerciseDetailScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Exercice introuvable</Text>
         <Text>Retourne à la liste pour sélectionner un exercice.</Text>
+        <Button label="Retour" onPress={() => router.back()} variant="secondary" />
       </View>
     );
   }
@@ -65,15 +67,15 @@ const ExerciseDetailScreen = () => {
         <TextField label="Repos (sec)" value={restSec} onChangeText={setRestSec} />
       </Card>
 
-      <Link
-        href={{
-          pathname: '/session/[exerciseId]',
-          params: params ?? { exerciseId: exercise.id },
-        }}
-        asChild
-      >
-        <Button label="Démarrer" onPress={() => undefined} />
-      </Link>
+      <Button
+        label="Démarrer"
+        onPress={() =>
+          router.push({
+            pathname: '/session/[exerciseId]',
+            params: params ?? { exerciseId: exercise.id },
+          })
+        }
+      />
     </View>
   );
 };

@@ -1,4 +1,4 @@
-import { Link, useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter } from 'expo-router';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Button } from '../../src/components/Button';
 import { Card } from '../../src/components/Card';
@@ -7,6 +7,7 @@ import { useExercises } from '../../src/hooks/useExercises';
 import { Fundamental } from '../../src/models/types';
 
 const FundamentalScreen = () => {
+  const router = useRouter();
   const { fundamental } = useLocalSearchParams<{ fundamental?: string }>();
   const selected = normalizeFundamental(fundamental);
   const { exercises, query, setQuery } = useExercises(selected);
@@ -47,9 +48,10 @@ const FundamentalScreen = () => {
                 Durées: {exercise.recommended.durationOptionsSec.join(', ')} sec
               </Text>
             ) : null}
-            <Link href={`/exercises/${exercise.id}`} asChild>
-              <Button label="Voir" onPress={() => undefined} />
-            </Link>
+            <Button
+              label="Voir"
+              onPress={() => router.push(`/exercises/${exercise.id}`)}
+            />
           </Card>
         ))}
       </ScrollView>
