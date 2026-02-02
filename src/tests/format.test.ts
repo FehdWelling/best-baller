@@ -7,6 +7,16 @@ const assertEqual = (label: string, received: string, expected: string) => {
 };
 
 export const runFormatTests = () => {
-  assertEqual('format 0', formatDuration(0), '0:00');
-  assertEqual('format 65', formatDuration(65), '1:05');
+  const cases = [
+    { label: 'format 0', input: 0, expected: '0:00' },
+    { label: 'format 61', input: 61, expected: '1:01' },
+    { label: 'format 65', input: 65, expected: '1:05' },
+    { label: 'format 3599', input: 3599, expected: '59:59' },
+    { label: 'format negative', input: -5, expected: '0:00' },
+    { label: 'format float', input: 5.9, expected: '0:05' },
+  ];
+
+  cases.forEach(({ label, input, expected }) => {
+    assertEqual(label, formatDuration(input), expected);
+  });
 };
