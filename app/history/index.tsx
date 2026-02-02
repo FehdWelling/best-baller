@@ -1,10 +1,11 @@
-import { Link } from 'expo-router';
+import { useRouter } from 'expo-router';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { Card } from '../../src/components/Card';
 import { useSessions } from '../../src/hooks/useSessions';
 import { formatDateLabel } from '../../src/utils/format';
 
 const HistoryScreen = () => {
+  const router = useRouter();
   const { sessions } = useSessions();
 
   return (
@@ -15,19 +16,20 @@ const HistoryScreen = () => {
           <Text style={styles.empty}>Aucune session enregistrée.</Text>
         ) : (
           sessions.map((session) => (
-            <Link key={session.id} href={`/history/${session.id}`} asChild>
-              <Pressable>
-                <Card>
-                  <Text style={styles.name}>{formatDateLabel(session.date)}</Text>
-                  <Text>Fondamental: {session.fundamental}</Text>
-                  <Text>
-                    {session.type === 'timer'
-                      ? `Durée: ${session.durationSec ?? 0} sec`
-                      : `Répétitions: ${session.reps ?? 0}`}
-                  </Text>
-                </Card>
-              </Pressable>
-            </Link>
+            <Pressable
+              key={session.id}
+              onPress={() => router.push(`/history/${session.id}`)}
+            >
+              <Card>
+                <Text style={styles.name}>{formatDateLabel(session.date)}</Text>
+                <Text>Fondamental: {session.fundamental}</Text>
+                <Text>
+                  {session.type === 'timer'
+                    ? `Durée: ${session.durationSec ?? 0} sec`
+                    : `Répétitions: ${session.reps ?? 0}`}
+                </Text>
+              </Card>
+            </Pressable>
           ))
         )}
       </ScrollView>
