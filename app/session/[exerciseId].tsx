@@ -27,7 +27,7 @@ const SessionScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Exercice introuvable</Text>
         <Text>Retourne à la liste pour sélectionner un exercice.</Text>
-        <Button label="Retour" onPress={() => router.back()} variant="secondary" />
+        <Button label="Retour" onPress={() => router.push('/')} variant="secondary" />
       </View>
     );
   }
