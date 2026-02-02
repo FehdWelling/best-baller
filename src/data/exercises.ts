@@ -138,3 +138,6 @@ export const exercises: Exercise[] = [
     },
   },
 ];
+
+export const getExerciseById = (id: string): Exercise | undefined =>
+  exercises.find((exercise) => exercise.id === id);

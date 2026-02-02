@@ -1,9 +1,9 @@
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
-import { Card } from '../components/Card';
-import { useSessions } from '../hooks/useSessions';
-import { computeMetrics } from '../utils/metrics';
+import { Card } from '../../src/components/Card';
+import { useSessions } from '../../src/hooks/useSessions';
+import { computeMetrics } from '../../src/utils/metrics';
 
-export const ProgressScreen = () => {
+const ProgressScreen = () => {
   const { sessions } = useSessions();
   const metrics = computeMetrics(sessions);
 
@@ -38,8 +38,11 @@ export const ProgressScreen = () => {
   );
 };
 
+export default ProgressScreen;
+
 const styles = StyleSheet.create({
   container: {
+    padding: 20,
     gap: 12,
   },
   title: {

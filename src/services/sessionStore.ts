@@ -11,6 +11,9 @@ export const sessionStore = {
   getAll(): Session[] {
     return [...sessions].sort((a, b) => b.date.localeCompare(a.date));
   },
+  getById(id: string): Session | undefined {
+    return sessions.find((session) => session.id === id);
+  },
   add(session: Session): void {
     sessions = [session, ...sessions];
     notify();
