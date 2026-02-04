@@ -4,8 +4,16 @@ import { useSessions } from '../../src/hooks/useSessions';
 import { computeMetrics } from '../../src/utils/metrics';
 
 const ProgressScreen = () => {
-  const { sessions } = useSessions();
+  const { sessions, isHydrated } = useSessions();
   const metrics = computeMetrics(sessions);
+
+  if (!isHydrated) {
+    return (
+      <View style={styles.loading}>
+        <Text>Chargement…</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -42,8 +50,15 @@ export default ProgressScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 20,
     gap: 12,
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 20,

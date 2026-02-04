@@ -6,7 +6,15 @@ import { formatDateLabel } from '../../src/utils/format';
 
 const HistoryScreen = () => {
   const router = useRouter();
-  const { sessions } = useSessions();
+  const { sessions, isHydrated } = useSessions();
+
+  if (!isHydrated) {
+    return (
+      <View style={styles.loading}>
+        <Text>Chargement…</Text>
+      </View>
+    );
+  }
 
   return (
     <View style={styles.container}>
@@ -41,8 +49,15 @@ export default HistoryScreen;
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     padding: 20,
     gap: 12,
+  },
+  loading: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 20,
   },
   title: {
     fontSize: 20,

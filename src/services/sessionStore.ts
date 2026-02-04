@@ -3,6 +3,7 @@ import { Session } from '../models/types';
 
 let sessions: Session[] = [];
 let listeners: Array<(items: Session[]) => void> = [];
+let hydrated = false;
 const STORAGE_KEY = 'best-baller:sessions:v1';
 
 const notify = (): void => {
@@ -103,9 +104,11 @@ const loadSessions = async (): Promise<void> => {
       return;
     }
     sessions = sanitizeSessions(parsed);
-    notify();
   } catch {
     // Intentionally ignore storage failures.
+  } finally {
+    hydrated = true;
+    notify();
   }
 };
 
@@ -127,6 +130,9 @@ export const sessionStore = {
     sessions = [];
     notify();
     void persistSessions();
+  },
+  isHydrated(): boolean {
+    return hydrated;
   },
   subscribe(listener: (items: Session[]) => void): () => void {
     listeners = [...listeners, listener];
