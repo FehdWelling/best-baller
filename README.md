@@ -4,6 +4,21 @@ Application mobile pour progresser au basket (tir, passe, dribble) avec des exer
 
 ## Démarrage rapide (Expo Router)
 
+### Configuration des variables d’environnement (Supabase)
+
+Copiez le fichier d’exemple et renseignez vos clés Supabase :
+
+```bash
+cp .env.example .env
+```
+
+Variables attendues :
+
+- `EXPO_PUBLIC_SUPABASE_URL`
+- `EXPO_PUBLIC_SUPABASE_ANON_KEY`
+
+Redémarrez Metro après modification des variables d’environnement.
+
 ```bash
 yarn
 ```
