@@ -2538,7 +2538,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:latest":
+"@supabase/supabase-js@npm:^2.45.2":
   version: 2.94.1
   resolution: "@supabase/supabase-js@npm:2.94.1"
   dependencies:
@@ -3232,7 +3232,7 @@ __metadata:
   resolution: "best-baller@workspace:."
   dependencies:
     "@react-native-async-storage/async-storage": "npm:1.23.1"
-    "@supabase/supabase-js": "npm:latest"
+    "@supabase/supabase-js": "npm:^2.45.2"
     "@types/react": "npm:^18.2.45"
     expo: "npm:^51.0.0"
     expo-constants: "npm:~16.0.2"
