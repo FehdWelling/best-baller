@@ -24,6 +24,10 @@ yarn
 ```
 
 ```bash
+npx expo start
+```
+
+```bash
 yarn ios
 ```
 
@@ -31,10 +35,6 @@ Ou, au choix :
 
 ```bash
 yarn start
-```
-
-```bash
-npx expo start
 ```
 
 ## Structure
