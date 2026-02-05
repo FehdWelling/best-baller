@@ -42,7 +42,11 @@ yarn start
 - `app/` : routes Expo Router (navigation par fichiers).
 - `src/` : logique agnostique (hooks, modèles, services, composants UI, utils).
 
+## Sync cloud sessions
+
+- Les sessions restent persistées localement (offline-first).
+- Si un utilisateur est connecté, les sessions sont synchronisées avec Supabase (`public.sessions`) en arrière-plan.
+
 ## Notes
 
-- Les sessions sont stockées en mémoire (aucune persistance).
 - Les statistiques sont calculées localement.
