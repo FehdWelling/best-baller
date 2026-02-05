@@ -49,6 +49,11 @@ const HomeScreen = () => {
           onPress={() => router.push('/progress')}
           variant="secondary"
         />
+        <Button
+          label="Profil"
+          onPress={() => router.push('/profile')}
+          variant="secondary"
+        />
       </View>
     </ScrollView>
   );
