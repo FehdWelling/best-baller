@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { StyleSheet, Text, View } from 'react-native';
 import { useAuth } from '../src/hooks/useAuth';
+import { sessionStore } from '../src/services/sessionStore';
 
 const RootLayout = () => {
-  const { session, isLoading } = useAuth();
+  const { session, user, isLoading } = useAuth();
   const segments = useSegments();
   const router = useRouter();
 
@@ -12,6 +13,8 @@ const RootLayout = () => {
     if (isLoading) {
       return;
     }
+
+    sessionStore.setSyncUser(user?.id ?? null);
 
     const inAuthGroup = segments[0] === '(auth)';
 
@@ -23,7 +26,7 @@ const RootLayout = () => {
     if (session && inAuthGroup) {
       router.replace('/');
     }
-  }, [segments, session, isLoading, router]);
+  }, [segments, session, user, isLoading, router]);
 
   if (isLoading) {
     return (
